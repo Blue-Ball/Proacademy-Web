@@ -1,0 +1,1 @@
+<?php echo $content; ?><?php /**PATH E:\web\laravel\20210826(Proacade)\proacademy-27\laravel\resources\views/email/content.blade.php ENDPATH**/ ?>

